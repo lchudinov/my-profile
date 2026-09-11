@@ -11,10 +11,13 @@ import { ProfileModule } from './profile/profile.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
     ProfileModule
   ],
   controllers: [AppController],
   providers: [AppService, HelloResolver],
 })
-export class AppModule {}
+export class AppModule { }
