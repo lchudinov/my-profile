@@ -9,4 +9,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Profile'
+export type * from './models/Skill'
+export type * from './models/ProfileSkill'
 export type * from './commonInputTypes'

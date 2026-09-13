@@ -1,1 +1,2 @@
-export * from './profile.model/profile.model';
+export * from './profile.model';
+export * from './skill.model';

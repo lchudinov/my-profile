@@ -23,4 +23,21 @@ model Profile {
   name        String
   email       String   @unique
   description String?
+  skills      ProfileSkill[]
+}
+
+model Skill {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  profiles    ProfileSkill[]
+}
+
+model ProfileSkill {
+  profileId Int
+  skillId   Int
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  skill   Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([profileId, skillId])
 }

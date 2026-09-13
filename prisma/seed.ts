@@ -9,14 +9,23 @@ const prisma = new PrismaClient({
   adapter,
 });
 
+const skills = [
+  'TypeScript',
+  'Node.js',
+  'NestJS',
+  'GraphQL',
+  'Prisma',
+  'Docker',
+  'C/C++',
+  'Go',
+];
+
 async function main() {
-  await prisma.profile.upsert({
+  const profile = await prisma.profile.upsert({
     where: {
       email: 'leonty@example.com',
     },
     update: {
-      name: 'Leonty',
-      description: 'Software developer',
     },
     create: {
       name: 'Leonty',
@@ -24,6 +33,27 @@ async function main() {
       description: 'Software developer',
     },
   });
+    for (const name of skills) {
+    const skill = await prisma.skill.upsert({
+      where: { name },
+      update: {},
+      create: { name },
+    });
+
+    await prisma.profileSkill.upsert({
+      where: {
+        profileId_skillId: {
+          profileId: profile.id,
+          skillId: skill.id,
+        },
+      },
+      update: {},
+      create: {
+        profileId: profile.id,
+        skillId: skill.id,
+      },
+    });
+  }
 }
 
 main()

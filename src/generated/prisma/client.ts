@@ -44,3 +44,13 @@ export { Prisma }
  * 
  */
 export type Profile = Prisma.ProfileModel
+/**
+ * Model Skill
+ * 
+ */
+export type Skill = Prisma.SkillModel
+/**
+ * Model ProfileSkill
+ * 
+ */
+export type ProfileSkill = Prisma.ProfileSkillModel
