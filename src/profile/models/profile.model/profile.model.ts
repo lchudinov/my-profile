@@ -8,8 +8,8 @@ export class Profile {
   @Field()
   name!: string;
 
-  @Field()
-  description!: string;
+  @Field(of => String, {nullable: true})
+  description?: string | null;
 
   @Field({ nullable: true })
   github?: string;

@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { HelloResolver } from './hello/hello.resolver';
 import { ProfileModule } from './profile/profile.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { ProfileModule } from './profile/profile.module';
         'graphql-ws': true,
       },
     }),
-    ProfileModule
+    ProfileModule,
+    PrismaModule
   ],
   controllers: [AppController],
   providers: [AppService, HelloResolver],
